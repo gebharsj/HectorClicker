@@ -45,7 +45,6 @@ public class LeaderboardManager : MonoBehaviour {
 		if (hectorClickerResponse.error != null)
 			Debug.Log (hectorClickerResponse.error);
 		else {
-			Debug.Log (hectorClickerResponse.text);
 			//remove square brackets
 			string responseString = hectorClickerResponse.text.Substring(1, hectorClickerResponse.text.Length - 2);
 			//split on commas
