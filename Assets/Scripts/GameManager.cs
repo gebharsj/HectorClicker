@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
 		ToggleObjects (true);
 		score = 0;
 		scoreText.text = score.ToString();
-		StartCoroutine (Timer(10));
+		StartCoroutine (Timer(120));
 	}
 
 	public void AddScore()
@@ -68,8 +68,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void EndGame()
-	{
-		OnGameEnd ();
+	{		
 		StartCoroutine (PostScores());
 	}
 
@@ -81,10 +80,11 @@ public class GameManager : MonoBehaviour {
 		customUploadHandler.contentType = "application/json";
 		www.uploadHandler = customUploadHandler;
 		yield return www.Send ();
-
 		if (www.error != null)
 			Debug.Log ("Error: " + www.error);
-		else
-			Debug.Log ("Success: " + www.responseCode);
+		else 
+			Debug.Log ("Success: " + www.responseCode);		
+
+		OnGameEnd ();
 	}
 }

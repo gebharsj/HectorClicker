@@ -40,6 +40,7 @@ public class LeaderboardManager : MonoBehaviour {
 	
 	IEnumerator GetScores()
 	{
+		highScores.Clear ();
 		WWW hectorClickerResponse = new WWW (targetURL);
 		yield return hectorClickerResponse;
 		if (hectorClickerResponse.error != null)
@@ -49,7 +50,6 @@ public class LeaderboardManager : MonoBehaviour {
 			string responseString = hectorClickerResponse.text.Substring(1, hectorClickerResponse.text.Length - 2);
 			//split on commas
 			string[] substrings = responseString.Split('{');
-
 			//pass each string into from json
 			int i = 0;
 			foreach (string sub in substrings) {
